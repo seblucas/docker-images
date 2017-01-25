@@ -8,7 +8,7 @@ Restart=on-failure
 RestartSec=10
 ExecStartPre=-/usr/bin/docker kill mosquitto
 ExecStartPre=-/usr/bin/docker rm mosquitto
-ExecStart=/usr/bin/docker run --rm -p 1883:1883 --name=mosquitto slucas/alpine-mosquitto
+ExecStart=/usr/bin/docker run --rm -p 1883:1883 --name=mosquitto seblucas/alpine-mosquitto:1.0
 ExecStop=-/usr/bin/docker stop mosquitto
 
 [Install]
