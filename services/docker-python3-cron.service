@@ -8,7 +8,10 @@ Restart=on-failure
 RestartSec=10
 ExecStartPre=-/usr/bin/docker kill python3-cron
 ExecStartPre=-/usr/bin/docker rm python3-cron
-ExecStart=/usr/bin/docker run --rm --device /dev/i2c-1 -v /var/local/docker/python3-cron:/data --name python3-cron seblucas/alpine-python3-cron:1.0
+ExecStart=/usr/bin/docker run --rm --device /dev/i2c-1 \
+                                   -v /var/opt/docker/python3-cron:/data \
+                                   --name python3-cron \
+                                   seblucas/alpine-python3-cron:1.0
 ExecStop=-/usr/bin/docker stop python3-cron
 
 [Install]
