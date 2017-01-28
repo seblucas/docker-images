@@ -1,0 +1,19 @@
+[Unit]
+Description=NZBGet The most efficient usenet downloader
+After=docker.service
+Requires=docker.service
+
+[Service]
+Restart=on-failure
+RestartSec=10
+ExecStartPre=-/usr/bin/docker kill nzbget
+ExecStartPre=-/usr/bin/docker rm nzbget
+ExecStart=/usr/bin/docker run --rm -p 6789:6789 \
+                                   -v /var/opt/downloads:/downloads \
+                                   -v /var/opt/docker/nzbget/:/config \
+                                   --name nzbget \
+                                   seblucas/alpine-nzbget
+ExecStop=-/usr/bin/docker stop nzbget
+
+[Install]
+WantedBy=multi-user.target
