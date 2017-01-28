@@ -1,0 +1,19 @@
+[Unit]
+Description=Portainer - Docker management UI
+After=docker.service
+Requires=docker.service
+
+[Service]
+Restart=on-failure
+RestartSec=10
+ExecStartPre=-/usr/bin/docker kill portainer
+ExecStartPre=-/usr/bin/docker rm portainer
+ExecStart=/usr/bin/docker run --rm -p 9000:9000 \
+                                   -v /var/run/docker.sock:/var/run/docker.sock \
+                                   -v /var/opt/docker/portainer:/data \
+                                  --name=portainer \
+                                   portainer/portainer:arm
+ExecStop=-/usr/bin/docker stop portainer
+
+[Install]
+WantedBy=multi-user.target
