@@ -9,14 +9,6 @@ RUN apk add --no-cache curl p7zip unrar wget && \
     NZBGET_VERSION=$(grep "stable-download" /tmp/json  | cut -d '"' -f 4) && \
     curl -o /tmp/nzbget.run -L "${NZBGET_VERSION}" && \
     sh /tmp/nzbget.run --destdir /app && \
-    cp -v /app/nzbget.conf /config/nzbget.conf && \
-    sed -i -e "s#\(MainDir=\).*#\1/downloads#g" /config/nzbget.conf && \
-    sed -i -e "s#\(WriteLog=\).*#\1none#g" /config/nzbget.conf && \
-    sed -i -e "s#\(ErrorTarget=\).*#\1screen#g" /config/nzbget.conf && \
-    sed -i -e "s#\(WarningTarget=\).*#\1screen#g" /config/nzbget.conf && \
-    sed -i -e "s#\(InfoTarget=\).*#\1screen#g" /config/nzbget.conf && \
-    sed -i -e "s#\(DetailTarget=\).*#\1none#g" /config/nzbget.conf && \
-    sed -i -e "s#\(DebugTarget=\).*#\1none#g" /config/nzbget.conf && \
     rm -rf /tmp/* /var/tmp/* /var/cache/apk/*
 
 # volume mappings
