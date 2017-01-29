@@ -1,0 +1,20 @@
+[Unit]
+Description=Minidlna UPNP server
+After=docker.service
+Requires=docker.service
+
+[Service]
+Restart=on-failure
+RestartSec=10
+ExecStartPre=-/usr/bin/docker kill minidlna
+ExecStartPre=-/usr/bin/docker rm minidlna
+ExecStart=/usr/bin/docker run --rm -p 1883:1883 \
+                              -p 1900:1900/udp \
+                              --net=host \
+                              -v /var/opt/downloads/dst:/opt/Videos \
+                              --name=minidlna \
+                              seblucas/alpine-minidlna
+ExecStop=-/usr/bin/docker stop minidlna
+
+[Install]
+WantedBy=multi-user.target
