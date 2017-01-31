@@ -1,0 +1,21 @@
+[Unit]
+Description=Traefik - HTTP Reverse proxy
+After=docker.service
+Requires=docker.service
+
+[Service]
+Restart=on-failure
+RestartSec=10
+ExecStartPre=-/usr/bin/docker kill traefik
+ExecStartPre=-/usr/bin/docker rm traefik
+ExecStart=/usr/bin/docker run --rm \
+                                   -v /var/run/docker.sock:/var/run/docker.sock \
+                                   -v /var/opt/docker/traefik/traefik.toml:/traefik.toml \
+                                   -p 80:80 \
+                                   -p 8080:8080 \
+                                  --name=traefik \
+                                   seblucas/alpine-traefik
+ExecStop=-/usr/bin/docker stop traefik
+
+[Install]
+WantedBy=multi-user.target
