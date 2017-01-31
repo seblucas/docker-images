@@ -8,7 +8,7 @@ Restart=on-failure
 RestartSec=10
 ExecStartPre=-/usr/bin/docker kill portainer
 ExecStartPre=-/usr/bin/docker rm portainer
-ExecStart=/usr/bin/docker run --rm -p 9000:9000 \
+ExecStart=/usr/bin/docker run --rm \
                                    -v /var/run/docker.sock:/var/run/docker.sock \
                                    -v /var/opt/docker/portainer:/data \
                                   --name=portainer \
