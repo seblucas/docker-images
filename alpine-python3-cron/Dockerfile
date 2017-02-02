@@ -1,15 +1,11 @@
-FROM armhf/alpine:3.4
+FROM seblucas/alpine-python3:1.0
 MAINTAINER Sebastien Lucas <sebastien@slucas.fr>
 LABEL Description="python3 / cron image"
 
-ARG TIMEZONE=Europe/Paris
-
 ADD runCron.sh /bin/runCron.sh
-RUN apk add --no-cache python3 libffi-dev && \
-    apk add --no-cache --virtual=build-dependencies tzdata wget ca-certificates build-base linux-headers python3-dev && \
-    cp /usr/share/zoneinfo/${TIMEZONE} /etc/localtime && echo "${TIMEZONE}" > /etc/timezone && \ 
-    wget "https://bootstrap.pypa.io/get-pip.py" --no-check-certificate -O /dev/stdout | python3 && \
-    pip install --trusted-host https://pypi.python.org paho-mqtt requests cffi smbus-cffi && \
+RUN apk add --no-cache libffi-dev && \
+    apk add --no-cache --virtual=build-dependencies ca-certificates build-base linux-headers python3-dev && \
+    pip install --no-cache-dir --trusted-host https://pypi.python.org cffi smbus-cffi && \
     apk del build-dependencies && \
     mkdir /data && \
     chmod +x /bin/runCron.sh && \
