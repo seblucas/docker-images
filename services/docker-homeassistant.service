@@ -11,7 +11,7 @@ ExecStartPre=-/usr/bin/docker rm homeassistant
 ExecStart=/usr/bin/docker run --rm \
                                    -v /var/opt/docker/homeassistant:/data \
                                    --name homeassistant \
-                                   seblucas/homeassistant
+                                   seblucas/alpine-homeassistant
 ExecStop=-/usr/bin/docker stop homeassistant
 
 [Install]
