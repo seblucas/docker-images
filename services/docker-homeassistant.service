@@ -1,0 +1,18 @@
+[Unit]
+Description=Home Assistant service
+After=docker-mosquitto.service
+Requires=docker-mosquitto.service
+
+[Service]
+Restart=on-failure
+RestartSec=10
+ExecStartPre=-/usr/bin/docker kill homeassistant
+ExecStartPre=-/usr/bin/docker rm homeassistant
+ExecStart=/usr/bin/docker run --rm \
+                                   -v /var/opt/docker/homeassistant:/data \
+                                   --name homeassistant \
+                                   seblucas/homeassistant
+ExecStop=-/usr/bin/docker stop homeassistant
+
+[Install]
+WantedBy=multi-user.target
