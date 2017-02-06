@@ -9,6 +9,7 @@ RestartSec=10
 ExecStartPre=-/usr/bin/docker kill python3-cron
 ExecStartPre=-/usr/bin/docker rm python3-cron
 ExecStart=/usr/bin/docker run --rm --device /dev/i2c-1 \
+                                   --net mosquitto-network \
                                    -v /var/opt/docker/python3-cron:/data \
                                    --name python3-cron \
                                    seblucas/alpine-python3-cron
