@@ -8,7 +8,7 @@ Restart=on-failure
 RestartSec=10
 ExecStartPre=-/usr/bin/docker kill nzbget
 ExecStartPre=-/usr/bin/docker rm nzbget
-ExecStart=/usr/bin/docker run --rm -p 6789:6789 \
+ExecStart=/usr/bin/docker run --rm \
                                    -v /var/opt/downloads:/downloads \
                                    -v /var/opt/docker/nzbget/:/config \
                                    --name nzbget \
