@@ -15,6 +15,9 @@ ExecStart=/usr/bin/docker run --rm \
                                    -p 8080:8080 \
                                   --name=traefik \
                                    seblucas/alpine-traefik
+ExecStartPost=-/usr/bin/docker network connect mosquitto-network traefik
+StandardOutput=null
+StandardError=null
 ExecStop=-/usr/bin/docker stop traefik
 
 [Install]

@@ -13,6 +13,8 @@ ExecStart=/usr/bin/docker run --rm --device /dev/i2c-1 \
                                    -v /var/opt/docker/python3-cron:/data \
                                    --name python3-cron \
                                    seblucas/alpine-python3-cron
+StandardOutput=null
+StandardError=null
 ExecStop=-/usr/bin/docker stop python3-cron
 
 [Install]

@@ -13,6 +13,8 @@ ExecStart=/usr/bin/docker run --rm \
                                    -v /var/opt/docker/portainer:/data \
                                   --name=portainer \
                                    portainer/portainer:linux-arm
+StandardOutput=null
+StandardError=null
 ExecStop=-/usr/bin/docker stop portainer
 
 [Install]

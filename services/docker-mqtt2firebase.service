@@ -1,0 +1,22 @@
+[Unit]
+Description=Python3 mqtt2firebase service
+After=docker-mosquitto.service
+Requires=docker-mosquitto.service
+
+[Service]
+Restart=on-failure
+RestartSec=10
+ExecStartPre=-/usr/bin/docker kill mqtt2firebase
+ExecStartPre=-/usr/bin/docker rm mqtt2firebase
+ExecStart=/usr/bin/docker run --rm \
+                                   --net mosquitto-network \
+                                   -v /var/opt/docker/mqtt2firebase:/data \
+                                   --name mqtt2firebase \
+                                   seblucas/alpine-python3 \
+                                   /data/MQTT2firebase.sh
+StandardOutput=null
+StandardError=null
+ExecStop=-/usr/bin/docker stop mqtt2firebase
+
+[Install]
+WantedBy=multi-user.target
