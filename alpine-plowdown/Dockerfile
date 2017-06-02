@@ -15,8 +15,6 @@ USER plowdown
 
 RUN plowmod --install
 
-VOLUME ["/media"]
-
 WORKDIR /media
 
 ENTRYPOINT ["/usr/bin/plowdown"]
