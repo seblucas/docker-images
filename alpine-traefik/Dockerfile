@@ -1,5 +1,8 @@
 FROM alpine:3.4
-ADD https://github.com/containous/traefik/releases/download/v1.1.2/traefik_linux-arm /traefik
+
+ARG TRAEFIK_VERSION=v1.2.0
+
+ADD https://github.com/containous/traefik/releases/download/${TRAEFIK_VERSION}/traefik_linux-arm /traefik
 RUN apk upgrade --no-cache &&\
     apk add --no-cache ca-certificates &&\
     chmod +x /traefik
