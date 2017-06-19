@@ -1,4 +1,4 @@
-FROM alpine:3.5
+FROM alpine:3.6
 MAINTAINER Sebastien Lucas <sebastien@slucas.fr>
 LABEL Description="Plowdown docker image"
 
