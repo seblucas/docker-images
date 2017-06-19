@@ -1,13 +1,19 @@
-FROM seblucas/alpine-python2
+FROM seblucas/alpine-python2:2.7.13
 MAINTAINER Sebastien Lucas <sebastien@slucas.fr>
 LABEL Description="Ansible"
 
+ARG ANSIBLE_VERSION=2.3.1.0
+
 RUN mkdir -p /etc/ansible && \
     apk add --no-cache openssl sshpass openssh-client && \
-    apk add --no-cache --virtual=build-dependencies build-base python-dev libffi-dev openssl-dev && \
-    pip install --no-cache-dir --trusted-host https://pypi.python.org ansible && \
+    apk add --no-cache --virtual=build-dependencies build-base python2-dev libffi-dev openssl-dev && \
+    pip install --no-cache-dir --upgrade pip cffi && \
+    pip install --no-cache-dir ansible==${ANSIBLE_VERSION} && \
     apk del build-dependencies && \
     rm -rf /tmp/* /var/tmp/* /var/cache/apk/*
 
-VOLUME ["/etc/ansible"]
+WORKDIR /etc/ansible
 
+ENTRYPOINT [ "ansible-playbook" ]
+
+CMD [ "--version" ]
