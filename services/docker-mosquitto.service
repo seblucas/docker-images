@@ -12,7 +12,7 @@ ExecStart=/usr/bin/docker run --rm -p 1883:1883 \
                                   --net mosquitto-network \
                                   --label traefik.enable=false \
                                   --name=mosquitto \
-                                  seblucas/alpine-mosquitto:1.0
+                                  seblucas/alpine-mosquitto:latest
 StandardOutput=null
 StandardError=null
 ExecStop=-/usr/bin/docker stop mosquitto
