@@ -1,8 +1,8 @@
-FROM armhf/alpine:3.4
+FROM alpine:3.6
 MAINTAINER Sebastien Lucas <sebastien@slucas.fr>
 LABEL Description="MQTT docker image"
 
-RUN apk --no-cache --update add \
+RUN apk --no-cache add \
                             mosquitto && \
     rm -rf /tmp/* /var/tmp/* /var/cache/apk/*
 
