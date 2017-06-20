@@ -1,0 +1,22 @@
+[Unit]
+Description=Python3 mqtt2mqtt service
+After=docker-mosquitto.service
+Requires=docker-mosquitto.service
+
+[Service]
+Restart=on-failure
+RestartSec=10
+ExecStartPre=-/usr/bin/docker kill mqtt2mqtt
+ExecStartPre=-/usr/bin/docker rm mqtt2mqtt
+ExecStart=/usr/bin/docker run --rm \
+                                   --net mosquitto-network \
+                                   -v /var/opt/docker/mqtt2mqtt:/data \
+                                   --name mqtt2mqtt \
+                                   seblucas/alpine-python3 \
+                                   /data/MQTT2MQTT.sh
+StandardOutput=null
+StandardError=null
+ExecStop=-/usr/bin/docker stop mqtt2mqtt
+
+[Install]
+WantedBy=multi-user.target
