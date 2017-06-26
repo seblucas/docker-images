@@ -1,0 +1,19 @@
+[Unit]
+Description=BPI Webserver to help with Kodi
+After=docker.service
+Requires=docker.service
+
+[Service]
+Restart=on-failure
+RestartSec=10
+ExecStartPre=-/usr/bin/docker kill bpi 
+ExecStartPre=-/usr/bin/docker rm bpi
+ExecStart=/usr/bin/docker run --rm \
+                                   --name bpi \
+                                   seblucas/alpine-nginx
+StandardOutput=null
+StandardError=null
+ExecStop=-/usr/bin/docker stop bpi
+
+[Install]
+WantedBy=multi-user.target
