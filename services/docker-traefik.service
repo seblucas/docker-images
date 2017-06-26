@@ -10,12 +10,14 @@ ExecStartPre=-/usr/bin/docker kill traefik
 ExecStartPre=-/usr/bin/docker rm traefik
 ExecStart=/usr/bin/docker run --rm \
                                    -v /var/run/docker.sock:/var/run/docker.sock \
-                                   -v /var/opt/docker/traefik/traefik.toml:/traefik.toml \
+                                   -v /var/opt/docker/traefik/traefik.toml.https:/traefik.toml \
+                                   -v /var/opt/docker/traefik/acme.json:/acme.json \
                                    -p 80:80 \
+                                   -p 443:443 \
                                    -p 8080:8080 \
-                                  --name=traefik \
+                                   --label traefik.enable=false \
+                                   --name=traefik \
                                    seblucas/alpine-traefik
-ExecStartPost=-/usr/bin/docker network connect mosquitto-network traefik
 StandardOutput=null
 StandardError=null
 ExecStop=-/usr/bin/docker stop traefik
