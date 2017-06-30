@@ -13,6 +13,10 @@ RUN apk --no-cache add \
 
 ADD default.conf /etc/nginx/conf.d/
 ADD index.html /var/www
+ADD nginx.conf /etc/nginx
+ADD mime.types /etc/nginx
+
+EXPOSE 80
 
 #USER nginx
 
