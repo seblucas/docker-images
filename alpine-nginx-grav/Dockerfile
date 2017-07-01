@@ -10,12 +10,18 @@ RUN echo '@community http://nl.alpinelinux.org/alpine/v3.6/community' >> /etc/ap
     rm -rf /tmp/*
 
 RUN sed -i \
-      -e "s/^user=.*/user=nginx/" \
-      -e "s/^group=.*/group=nginx/" \
+      -e "s/^user =.*/user=nginx/" \
+      -e "s/^group =.*/group=nginx/" \
+      -e "s/^;listen\.owner.*/listen.owner=nginx/" \
+      -e "s/^;listen\.group.*/listen.group=nginx/" \
       -e "s/^;catch_workers_output.*/catch_workers_output = yes/" \
+      -e "s/^listen = .*/listen=\/tmp\/php-fpm.sock/" \
+      -e "s/^pm.max_children.*/pm.max_children = 10/" \
+      -e "s/^;pm.max_requests.*/pm.max_requests=2000/" \
       /etc/php7/php-fpm.d/www.conf && \
     sed -i \
       -e "s/^;error_log.*/error_log=\/dev\/stdout/" \
+      -e "s/^;log_level.*/log_level=error/" \
       /etc/php7/php-fpm.conf
 
 ADD default.conf /etc/nginx/conf.d/
