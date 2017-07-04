@@ -22,7 +22,11 @@ RUN sed -i \
     sed -i \
       -e "s/^;error_log.*/error_log=\/dev\/stderr/" \
       -e "s/^;log_level.*/log_level=error/" \
-      /etc/php7/php-fpm.conf
+      /etc/php7/php-fpm.conf && \
+    sed -i \
+      -e "s/^expose_php.*/expose_php = Off/" \
+      -e "s/^;error_log.*/error_log=\/dev\/stderr/" \
+      /etc/php7/php.ini
 
 ADD default.conf /etc/nginx/conf.d/
 ADD phpinfo.php /var/www
