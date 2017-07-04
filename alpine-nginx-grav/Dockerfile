@@ -4,7 +4,7 @@ LABEL Description="Nginx/grav docker image"
 
 RUN echo '@community http://nl.alpinelinux.org/alpine/v3.6/community' >> /etc/apk/repositories && \
     apk --no-cache add \
-      php7-fpm@community php7@community php7-json@community php7-openssl@community php7-opcache@community php7-mbstring@community php7-zip@community  php7-curl@community php7-gd@community curl supervisor && \
+      php7-fpm@community php7@community php7-json@community php7-openssl@community php7-opcache@community php7-mbstring@community php7-zip@community  php7-curl@community php7-gd@community curl s6 && \
     ln -sf /usr/bin/php7 /usr/bin/php && \
     ln -sf /usr/sbin/php-fpm7 /usr/bin/php-fpm && \
     rm -rf /tmp/*
@@ -20,14 +20,14 @@ RUN sed -i \
       -e "s/^;pm.max_requests.*/pm.max_requests=2000/" \
       /etc/php7/php-fpm.d/www.conf && \
     sed -i \
-      -e "s/^;error_log.*/error_log=\/dev\/stdout/" \
+      -e "s/^;error_log.*/error_log=\/dev\/stderr/" \
       -e "s/^;log_level.*/log_level=error/" \
       /etc/php7/php-fpm.conf
 
 ADD default.conf /etc/nginx/conf.d/
-ADD supervisord.conf /etc/supervisor/conf.d/
 ADD phpinfo.php /var/www
+ADD services.d /etc/services.d
 
 EXPOSE 80
 
-CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
+CMD ["/bin/s6-svscan", "/etc/services.d"]
