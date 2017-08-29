@@ -1,6 +1,6 @@
-FROM alpine:3.4
+FROM alpine:3.6
 
-ARG TRAEFIK_VERSION=v1.3.5
+ARG TRAEFIK_VERSION=v1.3.7
 
 ADD https://github.com/containous/traefik/releases/download/${TRAEFIK_VERSION}/traefik_linux-arm /traefik
 RUN apk upgrade --no-cache &&\
