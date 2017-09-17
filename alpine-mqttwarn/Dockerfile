@@ -1,9 +1,9 @@
-FROM alpine:3.3
+FROM alpine:3.6
 MAINTAINER Sebastien Lucas <sebastien@slucas.fr>
 LABEL Description="mqttwarn image"
 
 RUN apk --no-cache --update add \
-        py-pip git && \
+        py2-pip git && \
     pip install paho-mqtt && \
     rm -rf /tmp/* /var/tmp/* /var/cache/apk/*
 
