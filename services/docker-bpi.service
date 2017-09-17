@@ -10,7 +10,7 @@ ExecStartPre=-/usr/bin/docker kill bpi
 ExecStartPre=-/usr/bin/docker rm bpi
 ExecStart=/usr/bin/docker run --rm \
                                    --name bpi \
-                                   seblucas/alpine-nginx
+                                   seblucas/alpine-nginx-kodi
 StandardOutput=null
 StandardError=null
 ExecStop=-/usr/bin/docker stop bpi
