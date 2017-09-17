@@ -1,0 +1,20 @@
+[Unit]
+Description=Python2 mqttwarn service
+After=docker-mosquitto.service
+Requires=docker-mosquitto.service
+
+[Service]
+Restart=on-failure
+RestartSec=10
+ExecStartPre=-/usr/bin/docker kill mqttwarn
+ExecStartPre=-/usr/bin/docker rm mqttwarn
+ExecStart=/usr/bin/docker run --rm \
+                                   --net mosquitto-network \
+                                   --name mqttwarn \
+                                   seblucas/alpine-mqttwarn
+StandardOutput=null
+StandardError=null
+ExecStop=-/usr/bin/docker stop mqttwarn
+
+[Install]
+WantedBy=multi-user.target
