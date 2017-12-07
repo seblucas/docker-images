@@ -1,5 +1,5 @@
 FROM alpine:3.6
-MAINTAINER Sebastien Lucas <sebastien@slucas.fr>
+LABEL maintainer=Sebastien Lucas <sebastien@slucas.fr>
 LABEL Description="python2 image"
 
 ARG TIMEZONE=Europe/Paris
