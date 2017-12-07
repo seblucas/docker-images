@@ -2,7 +2,7 @@ FROM alpine:3.6
 LABEL maintainer=Sebastien Lucas <sebastien@slucas.fr>
 LABEL Description="Nzbget"
 
-RUN apk add --no-cache --update curl p7zip unrar wget && \
+RUN apk add --no-cache --update curl p7zip unrar && \
     addgroup -g 1000 nzbget && adduser -H -D -G nzbget -s /bin/false -u 1000 nzbget && \
     mkdir /app && mkdir /config && mkdir /downloads && \
     curl -o /tmp/json -L http://nzbget.net/info/nzbget-version-linux.json && \
