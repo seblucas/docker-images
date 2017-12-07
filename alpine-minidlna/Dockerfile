@@ -1,5 +1,5 @@
 FROM alpine:3.6
-LABEL maintainer=Sebastien Lucas <sebastien@slucas.fr>
+LABEL maintainer="Sebastien Lucas <sebastien@slucas.fr>"
 
 # install minidlna
 RUN echo '@community http://nl.alpinelinux.org/alpine/v3.6/community' >> /etc/apk/repositories && \ 

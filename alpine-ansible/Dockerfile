@@ -1,5 +1,5 @@
 FROM seblucas/alpine-python2:2.7.13
-LABEL maintainer=Sebastien Lucas <sebastien@slucas.fr>
+LABEL maintainer="Sebastien Lucas <sebastien@slucas.fr>"
 LABEL Description="Ansible"
 
 ARG ANSIBLE_VERSION=2.3.1.0

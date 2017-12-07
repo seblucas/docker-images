@@ -1,5 +1,5 @@
 FROM seblucas/alpine-nginx:1.4
-LABEL maintainer=Sebastien Lucas <sebastien@slucas.fr>
+LABEL maintainer="Sebastien Lucas <sebastien@slucas.fr>"
 LABEL Description="Nginx/grav docker image"
 
 RUN echo '@community http://nl.alpinelinux.org/alpine/v3.6/community' >> /etc/apk/repositories && \

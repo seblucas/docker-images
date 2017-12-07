@@ -1,5 +1,5 @@
 FROM alpine:3.6
-LABEL maintainer=Sebastien Lucas <sebastien@slucas.fr>
+LABEL maintainer="Sebastien Lucas <sebastien@slucas.fr>"
 LABEL Description="Plowdown docker image"
 
 RUN apk --no-cache --update add \
