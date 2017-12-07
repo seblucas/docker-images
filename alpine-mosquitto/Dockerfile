@@ -7,7 +7,7 @@ RUN apk --no-cache add \
     rm -rf /tmp/* /var/tmp/* /var/cache/apk/*
 
 
-ADD mosquitto.conf /etc/mosquitto/mosquitto.conf
+COPY mosquitto.conf /etc/mosquitto/mosquitto.conf
 # Expose MQTT port
 EXPOSE 1883 9001
 

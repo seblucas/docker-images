@@ -7,7 +7,7 @@ RUN echo '@community http://nl.alpinelinux.org/alpine/v3.6/community' >> /etc/ap
     mkdir -p /opt/Music && mkdir -p /opt/Pictures && mkdir -p /opt/Videos
 
 # Add config file
-ADD minidlna.conf /etc/minidlna.conf
+COPY minidlna.conf /etc/minidlna.conf
 
 EXPOSE 1900/udp
 EXPOSE 8200

@@ -12,7 +12,7 @@ RUN apk --no-cache --update add \
     chmod +x /mqttwarn/mqttwarn.py && \
     ln -sf /dev/stdout /mqttwarn/mqttwarn.log
 
-ADD mqttwarn.ini /mqttwarn/mqttwarn.ini
+COPY mqttwarn.ini /mqttwarn/mqttwarn.ini
 
 RUN chown -R mqttwarn:mqttwarn /mqttwarn
 

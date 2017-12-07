@@ -28,9 +28,9 @@ RUN sed -i \
       -e "s/^;error_log.*/error_log=\/dev\/stderr/" \
       /etc/php7/php.ini
 
-ADD default.conf /etc/nginx/conf.d/
-ADD phpinfo.php /var/www
-ADD services.d /etc/services.d
+COPY default.conf /etc/nginx/conf.d/
+COPY phpinfo.php /var/www
+COPY services.d /etc/services.d
 
 EXPOSE 80
 

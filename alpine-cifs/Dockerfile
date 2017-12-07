@@ -2,8 +2,8 @@ FROM alpine:3.6
 LABEL maintainer=Sebastien Lucas <sebastien@slucas.fr>
 LABEL Description="CIFS docker image"
 
-ADD mountFreebox.sh /usr/bin/mountFreebox.sh
-ADD mountNas.sh /usr/bin/mountNas.sh
+COPY mountFreebox.sh /usr/bin/mountFreebox.sh
+COPY mountNas.sh /usr/bin/mountNas.sh
 
 RUN apk --no-cache --update add \
                             cifs-utils  && \
