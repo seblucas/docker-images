@@ -9,8 +9,8 @@ RUN apk --no-cache --update add \
     addgroup -g 1000 rclone && \
     adduser -h /config -D -G rclone -s /bin/sh -u 1000 rclone && \
     cd /tmp && \
-    wget -q https://downloads.rclone.org/rclone-${RCLONE_VERSION}-linux-arm.zip && \
-    unzip /tmp/rclone-${RCLONE_VERSION}-linux-arm.zip && \
+    wget -q "https://downloads.rclone.org/rclone-${RCLONE_VERSION}-linux-arm.zip" && \
+    unzip "/tmp/rclone-${RCLONE_VERSION}-linux-arm.zip" && \
     mv /tmp/rclone-*-linux-arm/rclone /usr/bin && \
     rm -r /tmp/rclone* && \
     rm -rf /tmp/* /var/tmp/* /var/cache/apk/*
