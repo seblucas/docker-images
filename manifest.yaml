@@ -1,0 +1,13 @@
+image: seblucas/{image}:{tag}
+manifests:
+ -
+   image: seblucas/{image}:armv6-{tag}
+   platform:
+     architecture: arm
+     variant: v6
+     os: linux
+ -
+   image: seblucas/{image}:amd64-{tag}
+   platform:
+     architecture: amd64
+     os: linux
