@@ -1,4 +1,4 @@
-FROM seblucas/alpine-python3:3.6.1
+FROM seblucas/alpine-python3:3.6
 LABEL maintainer="Sebastien Lucas <sebastien@slucas.fr>"
 LABEL Description="python3 / cron image"
 
@@ -10,7 +10,5 @@ RUN apk add --no-cache libffi-dev && \
     mkdir /data && \
     chmod +x /bin/runCron.sh && \
     rm -rf /tmp/* /var/tmp/* /var/cache/apk/*
-
-VOLUME ["/data"]
 
 ENTRYPOINT ["runCron.sh"]
