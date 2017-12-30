@@ -1,4 +1,5 @@
 image: seblucas/{image}:{tag}
+tags: ['latest','{majmin}']
 manifests:
  -
    image: seblucas/{image}:armv6-{tag}
