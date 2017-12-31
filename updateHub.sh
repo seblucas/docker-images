@@ -6,8 +6,13 @@ MAJMIN=`echo $TAG | cut -d . -f 1,2 `
 echo $TAG
 echo $MAJMIN
 
-for dir in alpine-python3 alpine-python2 alpine-mosquitto alpine-minidlna # alpine-python3-cron
+for dir in alpine-python3 alpine-python2 alpine-mosquitto alpine-minidlna alpine-python3-cron
 do
+	NBARCH=`manifest-tool inspect seblucas/$dir:$TAG | grep "Arch:" | wc -l`
+	if [[ $NBARCH -gt 1 ]]; then
+	  echo "Image seblucas/$dir:$TAG already uptodate"
+	  continue
+	fi
 	cd $dir
 	docker build . -t seblucas/$dir:armv6-$TAG
 	docker push seblucas/$dir:armv6-$TAG
