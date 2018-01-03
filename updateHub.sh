@@ -15,7 +15,7 @@ do
 	  continue
 	fi
 	cd $dir
-	docker build . -t seblucas/$dir:$ARCH-$TAG
+	docker build . -t seblucas/$dir:$ARCH-$TAG -t seblucas/$dir:$ARCH-$MAJMIN
 	docker push seblucas/$dir:$ARCH-$TAG
 	if [[ $ARCH == "armhf" ]]; then
 	  echo "Manifest uploading ..."
