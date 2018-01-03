@@ -2,6 +2,7 @@
 
 TAG=$(git describe --tags $(git rev-list --tags --max-count=1))
 MAJMIN=`echo $TAG | cut -d . -f 1,2 `
+ARCH=`dpkg --print-architecture`
 
 echo $TAG
 echo $MAJMIN
@@ -14,12 +15,15 @@ do
 	  continue
 	fi
 	cd $dir
-	docker build . -t seblucas/$dir:armv6-$TAG
-	docker push seblucas/$dir:armv6-$TAG
-	sed -i "s|{image}|$dir|g" ../manifest.yaml
-	sed -i "s|{tag}|$TAG|g" ../manifest.yaml
-	sed -i "s|{majmin}|$MAJMIN|g" ../manifest.yaml
-	manifest-tool push from-spec ../manifest.yaml
-	git checkout ../manifest.yaml
+	docker build . -t seblucas/$dir:$ARCH-$TAG
+	docker push seblucas/$dir:$ARCH-$TAG
+	if [[ $ARCH == "armhf" ]]; then
+	  echo "Manifest uploading ..."
+	  sed -i "s|{image}|$dir|g" ../manifest.yaml
+	  sed -i "s|{tag}|$TAG|g" ../manifest.yaml
+	  sed -i "s|{majmin}|$MAJMIN|g" ../manifest.yaml
+	  manifest-tool push from-spec ../manifest.yaml
+	  git checkout ../manifest.yaml
+	fi
 	cd ..
 done

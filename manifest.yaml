@@ -1,11 +1,17 @@
 image: seblucas/{image}:{tag}
-tags: ['latest','{majmin}']
+tags: ['{majmin}','latest']
 manifests:
  -
-   image: seblucas/{image}:armv6-{tag}
+   image: seblucas/{image}:armhf-{tag}
    platform:
      architecture: arm
-     variant: v6
+     variant: v7
+     os: linux
+ -
+   image: seblucas/{image}:arm64-{tag}
+   platform:
+     architecture: arm64
+     variant: v8
      os: linux
  -
    image: seblucas/{image}:amd64-{tag}
