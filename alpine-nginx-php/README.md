@@ -20,14 +20,14 @@ I'm using a proper manifest so you can use the main tags directly (no need for a
 ## Usage Example
 
 ```bash
-$ docker run --rm -p 80:80 seblucas/alpine-nginx
+$ docker run --rm -p 80:80 seblucas/alpine-nginx-php
 ```
 
-There is a default `index.html` page so you can check `http://<YOUR DOCKER HOST>/index.html` to confirm your container is working fine.
+There is a default `phpinfo.php` page so you can check `http://<YOUR DOCKER HOST>/phpinfo.php` to confirm your container is working fine.
 
 You can also mount as a volume :
  * `/etc/nginx/conf.d/default.conf` : to alter the default website configured.
- * `/var/www` : to add web content.
+ * `/var/www` : to add web / php content.
 
 ## Details
 

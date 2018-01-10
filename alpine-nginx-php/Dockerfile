@@ -1,6 +1,6 @@
-FROM seblucas/alpine-nginx:1.4
+FROM seblucas/alpine-nginx:3.6
 LABEL maintainer="Sebastien Lucas <sebastien@slucas.fr>"
-LABEL Description="Nginx/grav docker image"
+LABEL Description="Nginx/php docker image"
 
 RUN echo '@community http://nl.alpinelinux.org/alpine/v3.6/community' >> /etc/apk/repositories && \
     apk --no-cache add \
