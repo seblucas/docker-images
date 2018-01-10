@@ -7,7 +7,7 @@ ARCH=`dpkg --print-architecture`
 echo $TAG
 echo $MAJMIN
 
-for dir in alpine-python3 alpine-python2 alpine-mosquitto alpine-minidlna alpine-python3-cron
+for dir in alpine-python3 alpine-python2 alpine-mosquitto alpine-minidlna alpine-nginx alpine-python3-cron alpine-nginx-php
 do
 	NBARCH=`manifest-tool inspect seblucas/$dir:$TAG | grep "Arch:" | wc -l`
 	if [[ $NBARCH -gt 1 ]]; then
