@@ -17,6 +17,7 @@ $ docker run -it --rm \
     --device /dev/i2c-1 \
     -e 'CRON_STRINGS=* * * * * python3 /scripts/i2c2mqtt/i2c2mqtt.py --help' \
     -e 'CRON_GIT_CLONE=" --branch 1.0.0 --depth 1 https://github.com/seblucas/i2c2mqtt.git"' \
+    -e 'CRON_LOG_LEVEL=8' \
     seblucas/alpine-python3-cron:test
 ```
 
@@ -28,6 +29,7 @@ $ docker run -it --rm \
 
  * CRON_STRINGS : to specify inline cron lines, each line has to be separated by `\n`. Note the content of this variable is appended to the cron of `root`.
  * CRON_GIT_CLONE : to specify git repositories to clone (separated by `#`). The repositories are stored in `/scripts`. You have to provide almost the full command line (except for `git clone`).
+ * CRON_LOG_LEVEL : set the log level, the default value is 7.
 
 **BEWARE** : An ugly `eval` was used to clone the repositories, please check twice to avoid any problem.
 
