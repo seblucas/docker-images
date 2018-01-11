@@ -1,8 +1,5 @@
 #!/bin/sh
 
-set -x
-set -v
-
 [ "$(ls -A /scripts)" ] && exit 0
 
 cd /scripts
