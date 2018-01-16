@@ -1,8 +1,17 @@
 #/bin/sh
 
+if [ "$(git status --untracked-files=no --porcelain)" ]; then
+  echo "Uncommitted changes. Exiting..."
+  exit 1
+fi
+
+git pull --rebase
+
 TAG=$(git describe --tags $(git rev-list --tags --max-count=1))
 MAJMIN=`echo $TAG | cut -d . -f 1,2 `
 ARCH=`dpkg --print-architecture`
+
+git checkout $TAG
 
 echo $TAG
 echo $MAJMIN
@@ -23,7 +32,9 @@ do
 	  sed -i "s|{tag}|$TAG|g" ../manifest.yaml
 	  sed -i "s|{majmin}|$MAJMIN|g" ../manifest.yaml
 	  manifest-tool push from-spec ../manifest.yaml
-	  git checkout ../manifest.yaml
+	  git checkout $TAG -- ../manifest.yaml
 	fi
 	cd ..
 done
+
+git checkout master
