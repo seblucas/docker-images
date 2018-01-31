@@ -11,7 +11,9 @@ This image should be available (unless a problem happened on my side) for the fo
  * armhf
  * arm64
 
-I'm using a proper manifest so you can use the main tags directly (no need for amd64-X.X.X)
+I'm using a proper manifest so you can use the main tags directly (no need for amd64-X.X.X).
+
+If you want to learn more about multi-architecture docker images, please read [my blog](https://blog.slucas.fr/series/multi-architecture-docker-image/)s
 
 ## Usage Example
 
