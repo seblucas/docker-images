@@ -1,4 +1,4 @@
-FROM seblucas/alpine-python3:3.6
+FROM seblucas/alpine-python3:3.7
 LABEL maintainer="Sebastien Lucas <sebastien@slucas.fr>"
 LABEL Description="python3 / cron image"
 
