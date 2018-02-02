@@ -11,10 +11,7 @@ RUN apk --no-cache add \
     rm -rf /tmp/* /var/tmp/* /var/cache/apk/* && \
     mkdir -p /var/tmp/nginx && chown -R nginx:nginx /var/tmp/nginx 
 
-COPY default.conf /etc/nginx/conf.d/
-COPY index.html /var/www
-COPY nginx.conf /etc/nginx
-COPY mime.types /etc/nginx
+COPY data/ /
 
 EXPOSE 80
 
