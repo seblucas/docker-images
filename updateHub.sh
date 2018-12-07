@@ -16,7 +16,7 @@ git checkout $TAG
 echo $TAG
 echo $MAJMIN
 
-for dir in alpine-python3 alpine-cifs alpine-python2 alpine-mosquitto alpine-minidlna alpine-nginx alpine-python3-cron alpine-nginx-php
+for dir in alpine-python3 alpine-cifs alpine-python2 alpine-mosquitto alpine-minidlna alpine-nginx alpine-nginx-php
 do
 	NBARCH=`manifest-tool inspect seblucas/$dir:$TAG | grep "Arch:" | wc -l`
 	if [[ $NBARCH -gt 1 ]]; then
