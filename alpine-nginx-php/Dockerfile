@@ -1,10 +1,9 @@
-FROM seblucas/alpine-nginx:3.7
+FROM seblucas/alpine-nginx:3.9
 LABEL maintainer="Sebastien Lucas <sebastien@slucas.fr>"
 LABEL Description="Nginx/php docker image"
 
-RUN echo '@community http://nl.alpinelinux.org/alpine/v3.7/community' >> /etc/apk/repositories && \
-    apk --no-cache add \
-      php7-fpm@community php7@community php7-json@community php7-openssl@community php7-opcache@community php7-mbstring@community php7-zip@community  php7-curl@community php7-gd@community curl s6 && \
+RUN apk --no-cache add \
+      php7-fpm php7 php7-json php7-openssl php7-opcache php7-mbstring php7-zip  php7-curl php7-gd curl s6 && \
     ln -sf /usr/bin/php7 /usr/bin/php && \
     ln -sf /usr/sbin/php-fpm7 /usr/bin/php-fpm && \
     rm -rf /tmp/*

@@ -1,9 +1,8 @@
-FROM alpine:3.8
+FROM alpine:3.9
 LABEL maintainer="Sebastien Lucas <sebastien@slucas.fr>"
 
 # install minidlna
-RUN echo '@community http://nl.alpinelinux.org/alpine/v3.6/community' >> /etc/apk/repositories && \ 
-    apk --no-cache add minidlna@community && \
+RUN apk --no-cache add minidlna && \ 
     mkdir -p /opt/Music && mkdir -p /opt/Pictures && mkdir -p /opt/Videos
 
 # Add config file
