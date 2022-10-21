@@ -1,4 +1,4 @@
-FROM alpine:3.11.13
+FROM alpine:3.12.12
 LABEL maintainer="Sebastien Lucas <sebastien@slucas.fr>"
 LABEL Description="python2 image"
 
