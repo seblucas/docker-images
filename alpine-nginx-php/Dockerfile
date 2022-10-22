@@ -1,4 +1,4 @@
-FROM seblucas/alpine-nginx:3.13.12
+FROM seblucas/alpine-nginx:3.14.8
 LABEL maintainer="Sebastien Lucas <sebastien@slucas.fr>"
 LABEL Description="Nginx/php docker image"
 
