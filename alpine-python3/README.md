@@ -1,6 +1,6 @@
-# Python 3.6 Docker image
+# Python 3.X Docker image
 
-This image is based on Alpine Linux image, which is only a 5MB image, and contains [Python 3.6](https://www.python.org/) and of course `pip3`.
+This image is based on Alpine Linux image, which is only a 5MB image, and contains [Python 3.X](https://www.python.org/) and of course `pip3`.
 
 This image should be available (unless a problem happened on my side) for the following architectures :
  * amd64

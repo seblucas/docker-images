@@ -1,6 +1,6 @@
 # Nginx Docker image
 
-This image is based on Alpine Linux image, which is only a 5MB image, and contains [Nginx](https://nginx.org/) and [PHP](http://php.net/) installed as a package.
+This image is based on Alpine Linux image, which is only a 5MB image, and contains [Nginx](https://nginx.org/) and [PHP7](http://php.net/) installed as a package.
 
 You can check the real Nginx version [here for Alpine 3.6](https://pkgs.alpinelinux.org/packages?name=nginx&branch=v3.6&repo=&arch=x86_64&maintainer=) or [there for Alpine 3.7](https://pkgs.alpinelinux.org/packages?name=nginx&branch=v3.7&repo=&arch=x86_64&maintainer=).
 
