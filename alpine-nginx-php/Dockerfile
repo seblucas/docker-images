@@ -3,7 +3,7 @@ LABEL maintainer="Sebastien Lucas <sebastien@slucas.fr>"
 LABEL Description="Nginx/php docker image"
 
 RUN apk --no-cache add \
-      php7-fpm php7 php7-json php7-openssl php7-opcache php7-mbstring php7-zip  php7-curl php7-gd curl s6 && \
+      php7-fpm php7 php7-json php7-openssl php7-opcache php7-mbstring php7-zip  php7-curl php7-gd php7-session php7-phar curl s6 && \
     ln -sf /usr/bin/php7 /usr/bin/php && \
     ln -sf /usr/sbin/php-fpm7 /usr/bin/php-fpm && \
     rm -rf /tmp/*
