@@ -1,4 +1,4 @@
-FROM alpine:3.14.8
+FROM alpine:3.14.10
 LABEL maintainer="Sebastien Lucas <sebastien@slucas.fr>"
 LABEL Description="CIFS docker image"
 
